@@ -1,7 +1,10 @@
 import Placeholder from "@/components/Placeholder";
 import { Button } from "@/components/ui/button";
 import { initialTickets } from "@/data";
+import TicketItem from "@/features/ticket/components/ticket-item";
+import { getTicket } from "@/features/ticket/queries/get-ticket";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 type TicketPageProps = {
   params: {
@@ -9,23 +12,12 @@ type TicketPageProps = {
   };
 };
 
-export default function TicketPage({ params }: TicketPageProps) {
-  const ticket = initialTickets.find((ticket) => ticket.id === params.ticketId);
-  if (!ticket)
-    return (
-      <Placeholder
-        label="Ticket not found"
-        button={
-          <Button asChild variant="outline">
-            <Link href="/tickets">Back to tickets</Link>
-          </Button>
-        }
-      />
-    );
+export default async function TicketPage({ params }: TicketPageProps) {
+  const ticket = await getTicket(params.ticketId);
+  if (!ticket) return notFound();
   return (
-    <div>
-      <h2 className="text-xl">{ticket.title}</h2>
-      <h2 className="text-sm">{ticket.content}</h2>
+    <div className="flex justify-center items-center">
+      <TicketItem ticket={ticket} isDetail={true} />
     </div>
   );
 }
