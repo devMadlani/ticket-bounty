@@ -1,9 +1,5 @@
-import Placeholder from "@/components/Placeholder";
-import { Button } from "@/components/ui/button";
-import { initialTickets } from "@/data";
 import TicketItem from "@/features/ticket/components/ticket-item";
 import { getTicket } from "@/features/ticket/queries/get-ticket";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type TicketPageProps = {
