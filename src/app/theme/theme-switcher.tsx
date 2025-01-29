@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { LucideMoon, LucideSun } from "lucide-react";
 import { useTheme } from "next-themes";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();

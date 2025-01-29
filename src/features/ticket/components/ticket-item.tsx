@@ -1,10 +1,10 @@
+import { LucideSquareArrowOutUpRight, LucideTrash } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LucideSquareArrowOutUpRight } from "lucide-react";
 import { TICKET_ICONS } from "@/features/constants";
 import { Ticket } from "@/features/types";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-
+import { deleteTicket } from "../actions/delete-ticket";
 type TicketItemProps = {
   ticket: Ticket;
   isDetail?: boolean;
@@ -13,10 +13,17 @@ type TicketItemProps = {
 const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
   const detailButton = (
     <Button variant="outline" size="icon" asChild>
-      <Link href={`/tickets/${ticket.id}`} className="underline">
+      <Link prefetch href={`/tickets/${ticket.id}`} className="underline">
         <LucideSquareArrowOutUpRight />
       </Link>
     </Button>
+  );
+  const deleteButton = (
+    <form action={deleteTicket.bind(null, ticket.id)}>
+      <Button variant="outline" size="icon">
+        <LucideTrash />
+      </Button>
+    </form>
   );
   return (
     <div
@@ -35,7 +42,9 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
           <span className="line-clamp-3">{ticket.content}</span>
         </CardContent>
       </Card>
-      {!isDetail && <div className="flex flex-col gap-y-1">{detailButton}</div>}
+      <div className="flex flex-col gap-y-1">
+        {isDetail ? deleteButton : detailButton}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { LucideMessageSquareWarning } from "lucide-react";
-import { ComponentType, createElement } from "react";
+import { ComponentType } from "react";
 
 type PlaceholderProps = {
   label: string;

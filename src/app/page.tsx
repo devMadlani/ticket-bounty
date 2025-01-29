@@ -1,5 +1,5 @@
-import Heading from "@/components/Heading";
 import Link from "next/link";
+import Heading from "@/components/Heading";
 
 export default function Home() {
   return (
