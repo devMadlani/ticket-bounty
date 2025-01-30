@@ -13,7 +13,7 @@ export default async function TicketPage({ params }: TicketPageProps) {
   const ticket = await getTicket(ticketId);
   if (!ticket) return notFound();
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center mx-auto max-w-[528px]">
       <TicketItem ticket={ticket} isDetail={true} />
     </div>
   );
