@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Heading from "@/components/Heading";
 import CardCompact from "@/components/card-compact";
-import TicketCreateForm from "@/features/ticket/components/ticket-create-form";
+import TicketUpsertForm from "@/features/ticket/components/ticket-upsert-form";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         title="Create Ticket"
         description="A new ticket will be created."
         className="w-full max-w-[420px] self-center"
-        content={<TicketCreateForm />}
+        content={<TicketUpsertForm />}
       />
 
       <div className="flex-1 flex flex-col items-center">

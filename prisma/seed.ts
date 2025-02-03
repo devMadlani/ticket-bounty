@@ -21,4 +21,5 @@ const seed = async () => {
   await prisma.ticket.deleteMany();
   await prisma.ticket.createMany({ data: tickets });
 };
+
 seed();
